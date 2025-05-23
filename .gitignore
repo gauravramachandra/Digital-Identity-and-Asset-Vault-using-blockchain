@@ -32,4 +32,8 @@ ENV/
 
 # OS
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Project specific
+app/static/Uploads/*
+!app/static/Uploads/.gitkeep 
