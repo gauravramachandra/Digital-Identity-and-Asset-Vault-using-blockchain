@@ -30,12 +30,14 @@ A simple and secure web application for managing digital assets using blockchain
    python run_app.py
    ```
 
-4. Open a new terminal to run the Proof of Work comparison:
+4. Click the link from the client terminal to access the application
+
+5. Open a new terminal to run the Proof of Work comparison:
    ```bash
    python POW_Comparison.py
    ```
 
-5. Click the link from the client terminal to access the application
+
 
 ## Technical Details
 
