@@ -30,7 +30,7 @@ def get_tx_req():
                 trans["index"] = block["index"]
                 trans["hash"] = block["prev_hash"]
                 content.append(trans)
-        request_tx = sorted(content,key=lambda k: k["hash"],reverse=True)
+        request_tx = sorted(content,key=lambda k: k["index"],reverse=True)
 
 
 # Loads and runs the home page

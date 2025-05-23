@@ -140,14 +140,14 @@
 </style>
 <div class="container-fluid">
   <div class="row" style="padding-top: 10px">
-    <div class="col-sm-4" style="">
+    <div class="col-sm-6" style="">
       <h2 class="text-center alert alert-primary">Upload a File</h2>
       <form action="/submit" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label>User Name:</label>
           <input
             type="text"
-            class="form-control"
+            class="form-control form-control-lg"
             name="user"
             placeholder="Enter Your Name"
           />
@@ -160,14 +160,24 @@
             id="fileUpld"
             name="v_file"
             accept=".*"
-            class="form-control-file" /* Add this class for better dark theme */
+            class="form-control-file form-control-lg" /* Add this class for better dark theme */
           />
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Upload</button>
+        <button type="submit" class="btn btn-primary btn-lg mb-2">Upload</button>
       </form>
+      
+      <!-- Request to mine button -->
+      <div style="margin-top: 10px;">
+        <a href="{{ node_address }}/mine"
+           style="background-color: #dc3545 !important; color: white !important; border: none !important; padding: 0.5rem 1rem !important; border-radius: 0.25rem !important; text-decoration: none !important; display: inline-block !important;"
+           onmouseover="this.style.backgroundColor='#c82333' !important;"
+           onmouseout="this.style.backgroundColor='#dc3545' !important;">
+          Request to mine
+        </a>
+      </div>
     </div>
 
-    <div class="col-sm-7">
+    <div class="col-sm-6">
       <h2 class="text-center alert alert-primary">Uploaded Files</h2>
       {% for post in request_tx %}
       <div class="post_box">
@@ -195,8 +205,6 @@
       </div>
       {% endfor %}
     </div>
-
-    <div class="col-sm-1"></div>
   </div>
 </div>
 
