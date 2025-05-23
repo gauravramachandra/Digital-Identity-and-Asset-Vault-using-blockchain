@@ -1,0 +1,203 @@
+{% extends "base.html" %} {% block content %}
+<style type="text/css">
+  body {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+
+  .navbar {
+    background-color: #252526 !important;
+    border-bottom: 1px solid #363636;
+  }
+
+  .navbar-brand {
+    color: #d4d4d4 !important;
+  }
+
+  .navbar-nav .nav-link {
+    color: #d4d4d4 !important;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: #363636 !important;
+  }
+
+  .alert-primary {
+    background-color: #3b8eea;
+    color: #ffffff;
+    border-color: #3b8eea;
+  }
+
+  .form-control {
+    background-color: #252526;
+    color: #d4d4d4;
+    border: 1px solid #363636;
+  }
+
+  .form-control:focus {
+    background-color: #252526;
+    color: #d4d4d4;
+    border-color: #3b8eea;
+    box-shadow: 0 0 0 0.2rem rgba(59, 138, 234, 0.25);
+  }
+
+  label {
+    color: #d4d4d4;
+  }
+
+  .btn-primary {
+    background-color: #3b8eea;
+    border-color: #3b8eea;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: #2c73d2;
+    border-color: #2c73d2;
+  }
+
+  .post_box {
+    background: #252526;
+    padding: 1.2rem 0 0 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    border: 0.1rem solid #363636;
+    color: #d4d4d4;
+  }
+
+  .post_box-header {
+    padding-bottom: 1.2rem;
+    font-size: 1.4rem;
+    color: #d4d4d4;
+  }
+
+  .post_box-avatar {
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2.2rem;
+    float: left;
+    margin-right: 1.6rem;
+    border: 0.1rem solid #fff;
+    box-shadow: 0 0 0 0.2rem #dc3545; /* Keep a highlight */
+    background: #dc3545; /* Keep the original background */
+  }
+
+  .post_box-avatar::after {
+    content: "";
+    display: block;
+  }
+
+  .post_box-name {
+    font-weight: bold;
+    color: #d4d4d4;
+  }
+
+  .post_box-subtitle {
+    color: #777;
+  }
+
+  .post_box-body {
+    margin-top: 1.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    color: #d4d4d4;
+  }
+
+  .post_box-body a {
+    color: #3b8eea;
+    text-decoration: none;
+  }
+
+  .post_box-body a:hover {
+    text-decoration: underline;
+  }
+
+  .post_box-options {
+    float: right;
+  }
+
+  .option-btn {
+    background: #363636;
+    border: none;
+    color: #d4d4d4;
+    padding: 0.7rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    outline: none;
+    height: 4.2rem;
+  }
+
+  .option-btn:hover {
+    background: #4a4a4a;
+  }
+</style>
+<div class="container-fluid">
+  <div class="row" style="padding-top: 10px">
+    <div class="col-sm-4" style="">
+      <h2 class="text-center alert alert-primary">Upload a File</h2>
+      <form action="/submit" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>User Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="user"
+            placeholder="Enter Your Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Upload a File:</label>
+          <input
+            type="file"
+            id="fileUpld"
+            name="v_file"
+            accept=".*"
+            class="form-control-file" /* Add this class for better dark theme */
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Upload</button>
+      </form>
+    </div>
+
+    <div class="col-sm-7">
+      <h2 class="text-center alert alert-primary">Uploaded Files</h2>
+      {% for post in request_tx %}
+      <div class="post_box">
+        <div class="post_box-header">
+          <div
+            style="
+              background: #dc3545 none repeat scroll 0% 0%;
+              box-shadow: rgb(0, 4, 6) 0 0 0 0.2rem;
+            "
+            class="post_box-avatar"
+          >
+            {{post.user[0]}}
+          </div>
+          <div class="name-header">{{post.user}}</div>
+        </div>
+        <div>
+          <div class="post_box-body">
+            <p>
+              {{post.v_file}}&#x2192<a href="{{url_for('download_file',variable = post.v_file)}}"
+                >Download</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="col-sm-1"></div>
+  </div>
+</div>
+
+{% endblock %}
