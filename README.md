@@ -20,6 +20,8 @@ A simple and secure web application for managing digital assets using blockchain
 2. In the Left Terminal:
    ```bash
    pip install -r requirements.txt
+   ```
+   ```bash
    python peer.py
    ```
 
