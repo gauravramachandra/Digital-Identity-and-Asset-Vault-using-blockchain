@@ -30,9 +30,13 @@ A simple and secure web application for managing digital assets using blockchain
    python run_app.py
    ```
 
-4. Click the link from the client terminal to access the application
+4. Click the link from the client(right) terminal to access the application. 
+   (Note: peer.py and run_app.py are running on different ports to avoid collision).
 
-5. Open a new terminal to run the Proof of Work comparison:
+5. Enter user name -> Select File -> click Uplaod -> click "Request to Mine". The file gets stored in the blockchain.
+   Go back and refresh the page to see the uplaoded files.
+
+6. Open a new terminal to run the Proof of Work comparison:
    ```bash
    python POW_Comparison.py
    ```
